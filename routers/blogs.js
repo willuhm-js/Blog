@@ -3,7 +3,7 @@ const app = Router();
 module.exports = app;
 
 // Import private
-const { removeSpaces, newLine, removeDash } = require("../modules/private.js");
+const { removeSpaces, newLine, removeDash, error } = require("../modules/private.js");
 
 // Import node modules
 var { markdown } = require( "markdown" )
@@ -27,7 +27,7 @@ app.post("/new", async (req, res) => {
 
   // todo add argument proper handling here
   // Check if all fields are submitted correctly
-  if (!title || !subtitle || !body || !information) return res.send("Missing title/subtitle/body") ;
+  if (!title || !subtitle || !body || !information) return error("Parameter Missing", "Please make sure all fields are filled", res);
 
   // Check if blogs exists already
   let [blogExists] = await Blog.find({title});

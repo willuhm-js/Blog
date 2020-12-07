@@ -1,3 +1,5 @@
+
+
 exports.newLine = function(text) {
     let end = "";
     let i = 0
@@ -37,4 +39,8 @@ exports.removeSpaces = function(text) {
       }
     }
   return end;
+}
+
+exports.error = function(title, subtitle, res) {
+  return res.render("etc/error", {title, subtitle})
 }

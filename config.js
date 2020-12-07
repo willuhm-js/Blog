@@ -1,3 +1,3 @@
 module.exports = {
-  mongoCredential: process.env.MONGOC
+  mongoCredential: process.env.MONGO
 }

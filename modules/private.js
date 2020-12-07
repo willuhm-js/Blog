@@ -4,6 +4,8 @@ exports.newLine = function(text) {
     for (i = 0; i < text.length; i++) {
       if (text[i] == "\n") {
         end += "<br>"
+      } else {
+        end += text[i]
       }
     }
   return end;

@@ -2,7 +2,11 @@ const { Router } = require('express');
 const app = Router();
 module.exports = app;
 
+// Import private
 const { removeSpaces, newLine, removeDash } = require("../modules/private.js");
+
+// Import node modules
+var { markdown } = require( "markdown" )
 
 // Import database schemas
 const Blog = require("../modules/database/blog")
@@ -13,21 +17,32 @@ app.get("/", async (req, res) => {
   res.render("blogs/blogs", {blogs})
 })
 
-app.get("/new-blog", async (req, res) => {
+app.get("/new", async (req, res) => {
   res.render("blogs/new-blog")
 })
 
-app.post("/new-blog", async (req, res) => {
+app.post("/new", async (req, res) => {
   let {title, subtitle, body, information} = req.body;
   // todo add authentication handling here
 
   // todo add argument proper handling here
+  // Check if all fields are submitted correctly
   if (!title || !subtitle || !body || !information) return res.send("Missing title/subtitle/body") ;
-  
-  let [blogExists] = await Blog.find({title})
+
+  // Check if blogs exists already
+  let [blogExists] = await Blog.find({title});
   // todo add proper handling here
-  if (blogExists) return res.send("Blog already exists")
+  if (blogExists) return res.send("Blog already exists");
+
+
+  // Convert markdown to HTML, then replace "\n" with <br>
+  body = markdown.toHTML(body);
+  body = newLine(body);
+
+  // Make endpoint for blog aesthetically pleasing and URL compatible
   let urlName = removeSpaces(title)
+
+  // Make blog model and save it
   let newBlogModel = new Blog({
     title, 
     subtitle, 
@@ -36,11 +51,22 @@ app.post("/new-blog", async (req, res) => {
     urlName
   })
   let result = await newBlogModel.save()
-  console.log(result)
+  
+
+  // todo redirect to blog page
+  res.send("Blog created successfully")
 })
 
 
 app.get("/:urlName", async (req, res) => {
+  // Get the "urlName" of the requested post
   let {urlName} = req.params;
+
+  // Check if blog post exists
+  let [blogPost] = await Blog.find({urlName});
+  // todo error handling
+  if (!blogPost) return res.send("Blog not found");
+
   // todo create this
+  res.send(blogPost)
 })

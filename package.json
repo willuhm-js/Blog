@@ -1,13 +1,13 @@
 {
-  "name": "Blog-Rewritten",
-  "version": "1.0.0",
-  "description": "",
+  "name": "blog",
+  "version": "1.0.1",
+  "description": "A Generic blog using Express, EJS, and MongoDB",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "willuhm",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -16,5 +16,14 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "mongoose": "^5.11.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willuhm-js/Blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/willuhm-js/Blog/issues"
+  },
+  "homepage": "https://github.com/willuhm-js/Blog#readme"
 }

@@ -3,8 +3,8 @@ const app = Router();
 module.exports = app;
 
 // Import private
-const { removeSpaces, newLine, removeDash, error } = require("../modules/private.js");
-
+const { removeSpaces, newLine, removeDash, error } = require("../modules/private");
+const { owner } = require("../config");
 
 // Import database schemas
 const Blog = require("../modules/database/blog")
@@ -12,11 +12,11 @@ const Blog = require("../modules/database/blog")
 // Load home page
 app.get("/", async (req, res) => {
   let blogs = await Blog.find().sort({createdAt: -1})
-  res.render("blogs/blogs", {blogs})
+  res.render("blogs/blogs", {blogs, owner})
 })
 
 app.get("/new", async (req, res) => {
-  res.render("blogs/new-blog")
+  res.render("blogs/new-blog", { owner })
 })
 
 app.post("/new", async (req, res) => {

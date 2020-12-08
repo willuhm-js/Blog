@@ -8,8 +8,7 @@ const ejs = require("ejs");
 // Create app
 const app = express()
 
-// Require private module(s)
-//const { removeSpaces, newLine } = require("./modules/private.js");
+
 const { mongoCredential } = require("./config.js");
 
 // Connect to mongodb

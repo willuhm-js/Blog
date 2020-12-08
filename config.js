@@ -1,3 +1,4 @@
 module.exports = {
-  mongoCredential: process.env.MONGO
+  mongoCredential: process.env.MONGO,
+  owner: "John Doe"
 }

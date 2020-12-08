@@ -7,3 +7,12 @@
 .new-blog-submit {
   width: 16em;
 }
+
+.post-box {
+  margin: 10px;
+}
+
+.post-box-link, .post-box-link:hover {
+  text-decoration: none;
+  color: black;
+}

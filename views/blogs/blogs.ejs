@@ -11,19 +11,25 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title><%= owner %>'s Blog</title>
   </head>
   <body>
   <div class="container">
     <div class="margin-top"/>
-    <h1>John Doe's Blog</h1>
+    <h1><%= owner %>'s Blog</h1>
     <div class="margin-top"/>
-
-    <% blogs.forEach(blog => { %>
-      <div>
-        <p><%= blog.title %></p>
-      </div>
-    <% }); %>
+        <div class="row">
+        <% blogs.forEach(blog => { %>
+       
+          <div class="col-sm-12 post-box col-lg-6">
+          <a class="post-box-link" href="/blogs/<%= blog.urlName %>">
+            <h3><%= blog.title %></h3>
+            <p><%= blog.information %><p>
+            <a>
+          </div>
+         
+          <% }); %>
+        </div> 
     </div>
     
     

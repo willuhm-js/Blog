@@ -11,17 +11,21 @@ const Blog = require("../modules/database/blog")
 
 // Load home page
 app.get("/", async (req, res) => {
+  // Find blogs and render them
   let blogs = await Blog.find().sort({createdAt: -1})
   res.render("blogs/blogs", {blogs, owner})
 })
 
 app.get("/new", async (req, res) => {
+  // Render new-blog page
   res.render("blogs/new-blog", { owner })
 })
 
 app.post("/new", async (req, res) => {
   let {title, subtitle, body, information} = req.body;
-  // todo add authentication handling here
+  
+  let { auth } = req.cookies;
+  if (!auth) return res.redirect("/");
 
   // Check if all fields are submitted correctly
   if (!title || !subtitle || !body || !information) return error("Parameter Missing", "Please make sure all fields are filled", res);
@@ -46,6 +50,7 @@ app.post("/new", async (req, res) => {
   })
   let result = await newBlogModel.save()
   
+  // Redirect to blog post
   res.redirect(`/blogs/${urlName}`)
 })
 
@@ -56,8 +61,10 @@ app.get("/:urlName", async (req, res) => {
 
   // Check if blog post exists
   let [blogPost] = await Blog.find({urlName});
-  // todo error handling
-  if (!blogPost) return res.send("Blog not found");
-  // todo create this
+
+  // Error if blog post cannot be located
+  if (!blogPost) return error("Post Not Found", "Blog post has not been found", res)
+
+  // Render blog post
   res.render("blogs/blog-post", {owner, blogPost})
 })

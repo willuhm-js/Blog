@@ -1,5 +1,5 @@
 # Blog
-A generic blog using Express, EJS, and MongoDB
+A generic blog using Express, EJS, and MongoDB. Extremely simple (not advanced authentication, commenting, basic styling and Bootstrap) making it easy for begginer web developers to understand.
 
 ## Table of Contents
 * [Technologies](#technologies)
@@ -12,6 +12,7 @@ Project is created with:
 * Mongoose / MongoDB
 * EJS
 * Express
+* Bootstrap
 	
 ## Setup
 To run this project, edit config.json with your credentials and settings, then:

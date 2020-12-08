@@ -20,16 +20,15 @@
     <div class="margin-top"/>
         <div class="row">
         <% blogs.forEach(blog => { %>
-       
           <div class="col-sm-12 post-box col-lg-6">
           <a class="post-box-link" href="/blogs/<%= blog.urlName %>">
             <h3><%= blog.title %></h3>
             <p><%= blog.information %><p>
-            <a>
+          <a>
           </div>
-         
           <% }); %>
         </div> 
+        <div class="margin-bottom"/>
     </div>
     
     

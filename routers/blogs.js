@@ -58,7 +58,6 @@ app.get("/:urlName", async (req, res) => {
   let [blogPost] = await Blog.find({urlName});
   // todo error handling
   if (!blogPost) return res.send("Blog not found");
-
   // todo create this
-  res.send(blogPost)
+  res.render("blogs/blog-post", {owner, blogPost})
 })

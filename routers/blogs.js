@@ -5,8 +5,6 @@ module.exports = app;
 // Import private
 const { removeSpaces, newLine, removeDash, error } = require("../modules/private.js");
 
-// Import node modules
-var { markdown } = require( "markdown" )
 
 // Import database schemas
 const Blog = require("../modules/database/blog")
@@ -25,18 +23,14 @@ app.post("/new", async (req, res) => {
   let {title, subtitle, body, information} = req.body;
   // todo add authentication handling here
 
-  // todo add argument proper handling here
   // Check if all fields are submitted correctly
   if (!title || !subtitle || !body || !information) return error("Parameter Missing", "Please make sure all fields are filled", res);
 
   // Check if blogs exists already
   let [blogExists] = await Blog.find({title});
-  // todo add proper handling here
-  if (blogExists) return res.send("Blog already exists");
+  if (blogExists) return error("Blog Already Exists", "Please re-submit with a different name", res);
 
-
-  // Convert markdown to HTML, then replace "\n" with <br>
-  body = markdown.toHTML(body);
+  // Replace \n with <br>
   body = newLine(body);
 
   // Make endpoint for blog aesthetically pleasing and URL compatible
@@ -52,9 +46,7 @@ app.post("/new", async (req, res) => {
   })
   let result = await newBlogModel.save()
   
-
-  // todo redirect to blog page
-  res.send("Blog created successfully")
+  res.redirect(`/blogs/${urlName}`)
 })
 
 

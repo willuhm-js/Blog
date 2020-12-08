@@ -17,15 +17,36 @@
   <div class="container">
     <div class="margin-top"></div>
     <h1>John Doe's Blog</h1>
-    <form action="new" method="POST">
-      <input type="text" name="title" placeholder="Title"/>
-      <input type="text" name="information" placeholder="Information"/>
-      <input type="text" name="subtitle" placeholder="Subtitle"/>
-      <input type="text" name="body" placeholder="Body"/>
-      <input type="submit"/>
-    </form>
-    </div>
     
+    <!--
+      <input type="text" name="title" placeholder="Title"/> 
+      <input type="text" name="information" placeholder="Information"/>
+      <input type="text" name="subtitle" placeholder="Subtitle"/> 
+      <textarea type="text" name="body" placeholder="Body"></textarea>
+      <input type="submit"/> 
+    </form>  -->
+    <div class="margin-top"></div>
+    <form action="/blogs/new" method="POST">
+      <div class="form-group">
+        <input class="form-control" type="text" name="title" placeholder="Title"/>
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="subtitle" placeholder="Subtitle"/>
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="information" placeholder="Information"/>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" name="body" placeholder="Body" rows="10"></textarea>
+      </div>
+      <div class="d-flex align-items-center justify-content-center">
+      <button type="submit" class="btn btn-secondary new-blog-submit" >Submit</button>
+      </div>
+    </form>
+
+    </div>  
+    
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

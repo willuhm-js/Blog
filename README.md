@@ -4,7 +4,6 @@ A generic blog using Express, EJS, and MongoDB
 ## Table of Contents
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Professional Disclaimer](#professional-disclaimer)
 
 	
 ## Technologies

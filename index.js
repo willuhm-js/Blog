@@ -9,7 +9,7 @@ const ejs = require("ejs");
 const app = express()
 
 
-const { mongoCredential } = require("./config.js");
+const { mongoCredential, owner } = require("./config.js");
 
 // Connect to mongodb
 mongoose.connect(mongoCredential, {
@@ -37,6 +37,8 @@ app.use(express.static(`${__dirname}/public`))
 
 // Define routes
 app.use("/blogs", require("./routers/blogs.js"))
+app.use("/login", require("./routers/login.js"))
+
 
 app.get("/", async (req, res) => {
   res.redirect("/blogs")

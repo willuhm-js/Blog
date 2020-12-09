@@ -1,5 +1,5 @@
 # Blog
-A generic blog using Express, EJS, and MongoDB. Extremely simple (not advanced authentication, commenting, basic styling and Bootstrap) making it easy for begginer web developers to understand.
+A generic blog using Express, EJS, and MongoDB. Extremely simple (basic authentication, commenting, basic styling and Bootstrap) making it easy for begginer web developers to understand.
 
 ## Table of Contents
 * [Technologies](#technologies)

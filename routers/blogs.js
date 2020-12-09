@@ -4,7 +4,7 @@ module.exports = app;
 
 // Import private
 const { removeSpaces, newLine, removeDash, error } = require("../modules/private");
-const { owner } = require("../config");
+const { owner, correctPin } = require("../config");
 
 // Import database schemas
 const Blog = require("../modules/database/blog")
@@ -18,6 +18,13 @@ app.get("/", async (req, res) => {
 
 app.get("/new", async (req, res) => {
   // Render new-blog page
+  let { auth } = req.cookies;
+  if (!auth) return res.redirect("/");
+  if (auth !== correctPin) {
+    res.clearCookie("auth")
+    return res.redirect("/")
+  }
+
   res.render("blogs/new-blog", { owner })
 })
 
@@ -26,6 +33,10 @@ app.post("/new", async (req, res) => {
   
   let { auth } = req.cookies;
   if (!auth) return res.redirect("/");
+  if (auth !== correctPin) {
+    res.clearCookie("auth")
+    return res.redirect("/")
+    }
 
   // Check if all fields are submitted correctly
   if (!title || !subtitle || !body || !information) return error("Parameter Missing", "Please make sure all fields are filled", res);

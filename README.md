@@ -4,6 +4,7 @@ A generic blog using Express, EJS, and MongoDB. Extremely simple (basic authenti
 ## Table of Contents
 * [Technologies](#technologies)
 * [Setup](#setup)
+* [Demo](#demo)
 
 	
 ## Technologies
@@ -23,3 +24,6 @@ $ node index.js
 ```
 
 Server should be running on localhost on port 8080
+
+## Demo
+A live demo of this project can be found [here](https://Blog-Rewritten.willuhmjs.repl.co)
